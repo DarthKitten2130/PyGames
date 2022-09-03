@@ -17,6 +17,7 @@ shapes = ['t.lt(90)\nt.fd(300)\nt.rt(90)\nt.fd(200)',
           't.penup()\nt.home()\nt.pendown()\nt.goto(-50,30)',
           't.penup()\nt.home()\nt.pendown()\nt.goto(50,30)']
 
+
 while True:
     screen = turtle.getscreen()
     turtle.title("Hangman")
