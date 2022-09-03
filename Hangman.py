@@ -2,10 +2,9 @@ import random
 import turtle
 
 # Variables:
-food = ['burgers','pizza','idli','dosa','pasta','soup','rice']
-animals = ['dog','deer','antelope','elephant','toucan','eagle']
 letters_done = []
 strikes = 0
+Tlist = []
 
 # Graphics
 shapes = ['t.lt(90)\nt.fd(300)\nt.rt(90)\nt.fd(200)',
@@ -27,16 +26,16 @@ while True:
     t.pendown()
     
     # Topic Choice
-    u = input('Which topic? Food or animals? ')
-    v = input('Should we display vowels? Yes or no? ')
-    if u.lower()=='food':
-        Tlist = food
-    elif u.lower()=='animals':
-        Tlist = animals
-    else:
-        print('Error')
-        continue
 
+    u = input('Which topic? Your choices are:\nanimals ')
+    v = input('Should we display vowels? Yes or no? ')
+    
+    with open('animals.txt','rt') as f:
+        for line in f:
+            nline =line.lower()
+            nline = nline.replace('\n','')
+            Tlist.append(nline)
+    
     # Variables
     word = random.choice(Tlist)
     count = len(word)
@@ -65,8 +64,8 @@ while True:
     print(display.replace('-',' '))
 
     # Game
-    done_word =[z for z in display if z != ' ']
-    
+    print(word)
+    done_word =[z for z in display if z != ' ']   
 
     while word != ''.join(done_word).replace('-',' '):
         x = input('Enter a letter ').lower()
