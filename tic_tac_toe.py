@@ -41,12 +41,17 @@ t.fd(300)
 t.width(4)
 t.pencolor("pink")
  
+
+turn  = 1
+win = False
+winner = ''
 # Game
 def O(x,y):
      t.penup()
      t.goto(x,y)
      t.pendown()
      t.circle(40)
+
 
 def X(x,y):
      t.penup()
@@ -62,8 +67,71 @@ def X(x,y):
      t.pendown()
      t.fd(75)
      t.lt(135)
-  
-# Win Conditions:     
+
+
+def Hcheck(filled):
+     global win
+     global winner
+     global turn
+     for row in filled:
+               
+               if row.count('X')== 3:
+                    win,winner,turn = True,'X',0
+                    
+               elif row.count('O')== 3:
+                    win,winner,turn = True,'O',0
+     return [win,winner,turn]
+
+
+def Dcheck(filled):
+     global win
+     global winner
+     global turn
+     dxcount = docount = 0
+     for row in filled:
+             for x in range(3):
+                    if row[x] == 'X':
+                         dxcount+=1
+                    elif row[x] == 'O':
+                         docount +=1
+               
+             if dxcount == 3:
+               win,winner,turn = True,'X',0
+             elif docount == 3:
+               win,winner,turn = True,'O',0
+             
+             dxcount = docount = 0  
+             for row in filled:
+               for x in range(2,-1,-1):
+                    if row[x] == 'X':
+                         dxcount+=1
+                    elif row[x] == 'O':
+                         docount +=1
+
+             if dxcount == 3:
+               win,winner,turn = True,'X',0
+             elif docount == 3:
+               win,winner,turn = True,'O',0
+     return [win,winner,turn,dxcount,docount]
+
+
+def Vcheck(filled):
+     global win
+     global winner
+     global turn
+     vxcount = vocount = 0
+     for x in range(3):
+          for row in filled:
+               if row[x] == 'X':
+                    vxcount+=1
+               elif row[x] == 'O':
+                    vocount+=1
+     if vxcount == 3:
+          win,winner,turn = True,'X',0
+     elif vocount == 3:
+          win,winner,turn = True,'X',0
+     
+     return [win,winner,turn,vxcount,vocount]     
 
 
 squares = {"1" : [-100,75], "2" : [0,75], "3" : [100,75],
@@ -78,8 +146,7 @@ filled = [['n','n','n'],
           ['n','n','n'],
           ['n','n','n']]
 
-turn  = 1
-win = False
+
 
 while True:
      print('''1   2   3
@@ -121,46 +188,14 @@ while True:
                        O(squares[place1][0],squares[place1][1]-20)
                        filled[coords[place1][0]][coords[place1][1]]='O'
                   turn = 2
-                  
-             for row in filled:
-               
-               # Horizontal
-               if row.count('X')== 3:
-                    win = True
-                    winner = 'X'
-                    turn = 0
-                    
-               elif row.count('O')== 3:
-                    win = True
-                    winner = 'O'
-                    turn = 0
-               
-               # Vertical
-               x = 0
-               vxcount = 0
-               vocount = 0
-               if row[x] == 'X':
-                    vxcount += 1
-               elif row[x] == 'O':
-                    vocount += 1
-               x+=1
 
-             if vxcount == 3:
-               win = True
-               winner = 'X'    
-               turn = 0
-             
-             elif vocount == 3:
-               win = True
-               winner = 'O'
-               turn = 0 
-            
+
+             Hcheck(filled)
+             Dcheck(filled)
+             Vcheck(filled)
              if win == True:
                break  
                
-               
-             # Vertical
-
              # Player 2     
              while turn == 2:
 
@@ -183,38 +218,9 @@ while True:
                        filled[coords[place2][0]][coords[place2][1]]='O'
                   turn = 1
                   
-             # Horizontal
-             for row in filled:
-               if row.count('X')== 3:
-                    win = True
-                    winner = 'X'
-                    turn = 0
-                    
-               elif row.count('O')== 3:
-                    win = True
-                    winner = 'O'
-                    turn = 0
-               # Vertical
-               x = 0
-               vxcount = 0
-               vocount = 0
-               if row[x] == 'X':
-                    vxcount += 1
-               elif row[x] == 'O':
-                    vocount += 1
-               x+=1
-
-             if vxcount == 3:
-               win = True
-               winner = 'X'    
-               turn = 0
-             
-             elif vocount == 3:
-               win = True
-               winner = 'O'
-               turn = 0 
-
-
+             Hcheck(filled)
+             Dcheck(filled)
+             Vcheck(filled)
              if win == True:
                break 
                   
@@ -222,9 +228,68 @@ while True:
      
      elif players==1:
         p1 = input("X or O? ").upper()
-        if p1 != "X" and p1 != "O":
-            print('Error')
-            continue
+        if p1 == 'X':
+            cpu = 'O'
+        elif p1 == 'O':
+          cpu == 'X'
+        else:
+          print("Error")
+          continue
+        while win==False: 
+          
+             # Player 1
+             while turn == 1:
+
+                  place1 = input(f"Player 1, where will you place your {p1} ? (Choose a number). ")
+
+                  if place1.isnumeric()==False:
+                      print("Try again")
+                      continue
+                  elif int(place1)>9 or int(place1)<1:
+                      print('Try again')
+
+                  elif filled[coords[place1][0]][coords[place1][1]] != 'n':
+                       print('Spot already taken!')
+                       continue
+                  elif p1=='X':
+                       X(squares[place1][0],squares[place1][1])
+                       filled[coords[place1][0]][coords[place1][1]]='X'
+                  else:
+                       O(squares[place1][0],squares[place1][1]-20)
+                       filled[coords[place1][0]][coords[place1][1]]='O'
+                  turn = 2
+
+
+                           
+             Hcheck(filled)
+             Dcheck(filled)
+             Vcheck(filled)
+
+
+             if win == True:
+               break  
+               
+             # Player 2     
+             while turn == 2:
+
+                  place2 = str(random.randint(1,10))
+
+                  if filled[coords[place2][0]][coords[place2][1]] != 'n':
+                       continue
+                  elif cpu =='X':
+                       X(squares[place2][0],squares[place2][1])
+                       filled[coords[place2][0]][coords[place2][1]]='X'
+                  else:
+                       O(squares[place2][0],squares[place2][1]-20)
+                       filled[coords[place2][0]][coords[place2][1]]='O'
+                  turn = 1
+                  
+             Hcheck(filled)
+             Dcheck(filled)
+             Vcheck(filled)
+
+             if win == True:
+               break 
 	  
      else:
         print("Only 2 players allowed")
@@ -234,3 +299,6 @@ while True:
      print(f"Congratulations! {winner} is the winner!\n\n\n\n\n")
      win = False
      winner = ''
+     filled = [['n','n','n'],
+          ['n','n','n'],
+          ['n','n','n']]
