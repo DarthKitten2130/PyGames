@@ -95,11 +95,11 @@ def Vcheck(filled):
                     vxcount+=1
                elif row[x] == 'O':
                     vocount+=1
-     if vxcount == 3:
-          win,winner,turn = True,'X',0
-     elif vocount == 3:
-          win,winner,turn = True,'X',0
-     
+	  if vxcount == 3:
+		win,winner,turn = True,'X',0
+	  elif vocount == 3:
+		win,winner,turn = True,'X',0
+
      return [win,winner,turn,vxcount,vocount]     
 
 
