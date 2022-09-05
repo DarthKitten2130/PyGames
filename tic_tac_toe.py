@@ -3,43 +3,8 @@ import turtle
 
 # Board
 screen = turtle.getscreen()
-screen.bgcolor("black")
 t = turtle.Turtle()
-t.pencolor("white")
-t.hideturtle()
-t.speed(10)
-t.penup()
-t.goto(-150,-150)
-t.pendown()
-t.lt(90)
-t.fd(300)
-t.rt(90)
-t.fd(300)
-t.rt(90)
-t.fd(300)
-t.rt(90)
-t.fd(300)
 
-t.penup()
-t.goto(-50,-150)
-t.pendown()
-t.rt(90)
-t.fd(300)
-t.penup()
-t.goto(50,-150)
-t.pendown()
-t.fd(300)
-t.rt(90)
-t.penup()
-t.goto(-150,-50)
-t.pendown()
-t.fd(300)
-t.penup()
-t.goto(-150,50)
-t.pendown()
-t.fd(300)
-t.width(4)
-t.pencolor("pink")
  
 
 turn  = 1
@@ -95,11 +60,12 @@ def Vcheck(filled):
                     vxcount+=1
                elif row[x] == 'O':
                     vocount+=1
-     if vxcount == 3:
-          win,winner,turn = True,'X',0
-     elif vocount == 3:
-          win,winner,turn = True,'X',0
-     
+          if vxcount == 3:
+               win,winner,turn = True,'X',0
+          elif vocount == 3:
+               win,winner,turn = True,'O',0
+          vxcount = vocount = 0
+
      return [win,winner,turn,vxcount,vocount]     
 
 
@@ -158,6 +124,42 @@ filled = [['n','n','n'],
 
 
 while True:
+     screen.bgcolor("black")
+     t.pencolor("white")
+     t.hideturtle()
+     t.speed(10)
+     t.penup()
+     t.goto(-150,-150)
+     t.pendown()
+     t.lt(90)
+     t.fd(300)
+     t.rt(90)
+     t.fd(300)
+     t.rt(90)
+     t.fd(300)
+     t.rt(90)
+     t.fd(300)
+
+     t.penup()
+     t.goto(-50,-150)
+     t.pendown()
+     t.rt(90)
+     t.fd(300)
+     t.penup()
+     t.goto(50,-150)
+     t.pendown()
+     t.fd(300)
+     t.rt(90)
+     t.penup()
+     t.goto(-150,-50)
+     t.pendown()
+     t.fd(300)
+     t.penup()
+     t.goto(-150,50)
+     t.pendown()
+     t.fd(300)
+     t.width(4)
+     t.pencolor("pink")
      print('''1   2   3
 
 4   5   6
@@ -240,7 +242,7 @@ while True:
         if p1 == 'X':
             cpu = 'O'
         elif p1 == 'O':
-          cpu == 'X'
+          cpu = 'X'
         else:
           print("Error")
           continue
@@ -281,7 +283,7 @@ while True:
              # Player 2     
              while turn == 2:
 
-                  place2 = str(random.randint(1,10))
+                  place2 = str(random.randint(1,9))
 
                   if filled[coords[place2][0]][coords[place2][1]] != 'n':
                        continue
@@ -311,3 +313,5 @@ while True:
      filled = [['n','n','n'],
           ['n','n','n'],
           ['n','n','n']]
+     t.width(1)
+     screen.clear()
