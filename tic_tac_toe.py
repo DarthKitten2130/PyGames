@@ -68,6 +68,7 @@ def X(x,y):
      t.fd(75)
      t.lt(135)
 
+# Win conditions
 
 def Hcheck(filled):
      global win
@@ -81,38 +82,6 @@ def Hcheck(filled):
                elif row.count('O')== 3:
                     win,winner,turn = True,'O',0
      return [win,winner,turn]
-
-
-def Dcheck(filled):
-     global win
-     global winner
-     global turn
-     dxcount = docount = 0
-     for row in filled:
-             for x in range(3):
-                    if row[x] == 'X':
-                         dxcount+=1
-                    elif row[x] == 'O':
-                         docount +=1
-               
-             if dxcount == 3:
-               win,winner,turn = True,'X',0
-             elif docount == 3:
-               win,winner,turn = True,'O',0
-             
-             dxcount = docount = 0  
-             for row in filled:
-               for x in range(2,-1,-1):
-                    if row[x] == 'X':
-                         dxcount+=1
-                    elif row[x] == 'O':
-                         docount +=1
-
-             if dxcount == 3:
-               win,winner,turn = True,'X',0
-             elif docount == 3:
-               win,winner,turn = True,'O',0
-     return [win,winner,turn,dxcount,docount]
 
 
 def Vcheck(filled):
@@ -132,6 +101,46 @@ def Vcheck(filled):
           win,winner,turn = True,'X',0
      
      return [win,winner,turn,vxcount,vocount]     
+
+
+def Dcheck(filled):
+     global win
+     global winner
+     global turn
+     dxcount = docount = 0
+
+     # Negative Diagonal
+     x = 0
+     for row in filled:
+          if row[x] == 'X':
+               dxcount+=1
+          elif row[x] == 'O':
+               docount +=1
+          x+=1
+               
+     if dxcount == 3:
+          win,winner,turn = True,'X',0
+     elif docount == 3:
+          win,winner,turn = True,'O',0
+             
+     dxcount = docount = 0
+
+     # Positive Diagonal 
+     x = 2 
+     for row in filled:
+          if row[x] == 'X':
+               dxcount+= 1
+          elif row[x] == 'O':
+               docount += 1
+          x -= 1
+
+     if dxcount == 3:
+          win,winner,turn = True,'X',0
+     elif docount == 3:
+          win,winner,turn = True,'O',0
+               
+
+     return [win,winner,turn,dxcount,docount]
 
 
 squares = {"1" : [-100,75], "2" : [0,75], "3" : [100,75],
