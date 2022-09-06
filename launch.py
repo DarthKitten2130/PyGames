@@ -1,5 +1,3 @@
-import os
-
 def imp(name):
         module = __import__(name)
         return module
