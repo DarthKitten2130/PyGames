@@ -33,6 +33,7 @@ def X(x,y):
      t.fd(75)
      t.lt(135)
 
+
 # Win conditions
 
 def Hcheck(filled):
@@ -214,7 +215,9 @@ while game == True:
              Hcheck(filled)
              Dcheck(filled)
              Vcheck(filled)
-             #Fcheck(filled)
+             if win == True:
+               break
+             Fcheck(filled)
              if win == True:
                break  
                
@@ -243,7 +246,9 @@ while game == True:
              Hcheck(filled)
              Dcheck(filled)
              Vcheck(filled)
-             #Fcheck(filled)
+             if win == True:
+               break 
+             Fcheck(filled)
              if win == True:
                break 
                   
