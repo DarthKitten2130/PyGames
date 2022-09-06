@@ -4,11 +4,11 @@ rps= ['rock','paper','scissors']
 cpu = 0
 user= 0
 while True:
-    x = input('Rock, Paper, or Scissors? ')
+    x = input('Rock, Paper, or Scissors? (type quit to quit the game) ')
     y = random.choice(rps)
-    print(y)
 
     if x.lower()=='rock':
+        print(y)
         if y=='rock':
             print('Go again')
             continue
@@ -20,6 +20,7 @@ while True:
             user+=1
         
     elif x.lower()=='paper':
+        print(y)
         if y=='rock':
             print('good for you... lucky')
             user+=1
@@ -32,6 +33,7 @@ while True:
 
 
     elif x.lower()=='scissors':
+        print(y)
         if y=='rock':
             print('Ha Ha you lose')
             cpu+=1
@@ -41,6 +43,10 @@ while True:
         elif y=='scissors':
             print('Go again')
             continue
+    
+    
+    elif x.lower()=='quit':
+        quit() 
         
     else:
         print('Type it again idiot')
