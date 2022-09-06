@@ -109,6 +109,16 @@ def Dcheck(filled):
      return [win,winner,turn,dxcount,docount]
 
 
+def Fcheck (filled):
+     global win
+     global winner
+     global turn
+     if filled[0].count('n') == 0 and filled[1].count('n') == 0 and filled[2].count('n') == 0:
+          win = True
+          winner = 'None'
+          turn = 0
+     return [win,winner,turn]
+
 squares = {"1" : [-100,75], "2" : [0,75], "3" : [100,75],
            "4" : [-100,-25], "5" : [0,-25], "6" : [100,-25],
            "7" : [-100,-125], "8" : [0,-125], "9" : [100,-125]}
@@ -121,9 +131,9 @@ filled = [['n','n','n'],
           ['n','n','n'],
           ['n','n','n']]
 
+game = True
 
-
-while True:
+while game == True:
      screen.bgcolor("black")
      t.pencolor("white")
      t.hideturtle()
@@ -204,6 +214,7 @@ while True:
              Hcheck(filled)
              Dcheck(filled)
              Vcheck(filled)
+             #Fcheck(filled)
              if win == True:
                break  
                
@@ -232,6 +243,7 @@ while True:
              Hcheck(filled)
              Dcheck(filled)
              Vcheck(filled)
+             #Fcheck(filled)
              if win == True:
                break 
                   
@@ -306,12 +318,8 @@ while True:
         print("Only 2 players allowed")
         continue
 
-
-     print(f"Congratulations! {winner} is the winner!\n\n\n\n\n")
-     win = False
-     winner = ''
-     filled = [['n','n','n'],
-          ['n','n','n'],
-          ['n','n','n']]
-     t.width(1)
-     screen.clear()
+     if winner == 'X' or winner == 'O':
+          print(f"Congratulations! {winner} is the winner!\n\n\n\n\n")
+     elif winner == 'None':
+          print("It's a tie")
+     game = False
