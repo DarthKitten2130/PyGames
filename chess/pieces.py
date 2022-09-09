@@ -1,5 +1,5 @@
 import pygame as pg
-
+from chess import coords
 
 class Piece:
     def __init__(self,img,pos):
