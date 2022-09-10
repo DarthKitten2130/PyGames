@@ -64,7 +64,6 @@ while True:
     print(display.replace('-',' '))
 
     # Game
-    print(word)
     done_word =[z for z in display if z != ' ']   
 
     while word != ''.join(done_word).replace('-',' '):
@@ -139,4 +138,5 @@ while True:
     else:
         print('Ha ha you lose')
     print('\n'*5)
+    letters_done.clear()
     screen.clear()
