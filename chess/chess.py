@@ -1,34 +1,48 @@
 import pygame as pg
-import numpy as np
-from os import chdir
 from pieces import Units
+from pieces import coords
+#from os import chdir
+
+
 # Board Setup
 pg.init()
-chdir('.\\chess')
+#chdir('.\\chess')
 screen = pg.display.set_mode((1000,800))
 pg.display.set_caption("Chess")
 running = True
 bgimg = pg.image.load('Chess_Board.png')
 bgimg = pg.transform.scale(bgimg,(700,700))
 
-coords = np.array([[(70,70),(155,70),(240,70),(325,70),(410,70),(495,70),(580,70),(665,70)],
-                   [(70,150),(155,150),(240,150),(325,150),(410,150),(495,150),(580,150),(665,150)],
-                   [(70,230),(155,230),(240,230),(325,230),(410,230),(495,230),(580,230),(665,230)],
-                   [(70,310),(155,310),(240,310),(325,310),(410,310),(495,310),(580,310),(665,310)],
-                   [],
-                   [],
-                   [],
-                   []])
+
 
 # Pieces
-wpawn1 = Units.Pawn('.\\white\\white_pawn.png',(70,150))
-wpawn2 = Units.Pawn('.\\white\\white_pawn.png',(155,70))
-wpawn3 = Units.Pawn('.\\white\\white_pawn.png',(240,70))
-wpawn4 = Units.Pawn('.\\white\\white_pawn.png',(325,70))
-wpawn5 = Units.Pawn('.\\white\\white_pawn.png',(410,70))
-wpawn6 = Units.Pawn('.\\white\\white_pawn.png',(495,70))
-wpawn7 = Units.Pawn('.\\white\\white_pawn.png',(580,70))
-wpawn8 = Units.Pawn('.\\white\\white_pawn.png',(665,70))
+
+#White
+wking = Units.King('.\\white\\white_king.png',coords[7,4])
+wqueen = Units.Queen('.\\white\\white_queen.png',coords[7,3])
+wbishop1 = Units.Bishop('.\\white\\white_bishop.png',coords[7,2])
+wbishop2 = Units.Bishop('.\\white\\white_bishop.png',coords[7,5])
+wknight1 = Units.Knight('.\\white\\white_knight.png',coords[7,1])
+wknight2 = Units.Knight('.\\white\\white_knight.png',coords[7,6])
+wrook1 = Units.Rook('.\\white\\white_rook.png',coords[7,0])
+wrook2 = Units.Rook('.\\white\\white_rook.png',coords[7,7])
+
+wpawn1 = Units.Pawn('.\\white\\white_pawn.png',coords[6,0])
+wpawn2 = Units.Pawn('.\\white\\white_pawn.png',coords[6,1])
+wpawn3 = Units.Pawn('.\\white\\white_pawn.png',coords[6,2])
+wpawn4 = Units.Pawn('.\\white\\white_pawn.png',coords[6,3])
+wpawn5 = Units.Pawn('.\\white\\white_pawn.png',coords[6,4])
+wpawn6 = Units.Pawn('.\\white\\white_pawn.png',coords[6,5])
+wpawn7 = Units.Pawn('.\\white\\white_pawn.png',coords[6,6])
+wpawn8 = Units.Pawn('.\\white\\white_pawn.png',coords[6,7])
+
+#Black
+bking = Units.King('.\\black\\black_king.png',coords[0,4])
+bqueen = Units.Queen('.\\black\\black_queen.png',coords[0,3])
+bbishop1 = Units.Bishop('.\\black\\black_bishop.png',coords[0,2])
+bbishop2 = Units.Bishop('.\\black\\black_bishop.png',coords[0,5])
+bknight1 = Units.Knight('.\\black\\black_knight.png',coords[0,1])
+
 
 while running == True:
     for event in pg.event.get():
@@ -37,6 +51,17 @@ while running == True:
             
     screen.fill((0,104,14))
     screen.blit(bgimg,(50,50))
+
+
+    wking.Blit(screen)
+    wqueen.Blit(screen)
+    wbishop1.Blit(screen)
+    wbishop2.Blit(screen)
+    wknight1.Blit(screen)
+    wknight2.Blit(screen)
+    wrook1.Blit(screen)
+    wrook2.Blit(screen)
+
     wpawn1.Blit(screen)
     wpawn2.Blit(screen)
     wpawn3.Blit(screen)
@@ -45,6 +70,9 @@ while running == True:
     wpawn6.Blit(screen)
     wpawn7.Blit(screen)
     wpawn8.Blit(screen)
+
+    bking.Blit(screen)
+    bqueen.Blit(screen)
 
     pg.event.get()
     pg.display.flip()
