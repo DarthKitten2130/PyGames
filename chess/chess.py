@@ -1,4 +1,5 @@
 import pygame as pg
+import sys
 from pieces import Units
 from pieces import coords
 #from os import chdir
@@ -6,11 +7,12 @@ from pieces import coords
 
 # Board Setup
 pg.init()
+clock = pg.time.Clock()
 #chdir('.\\chess')
 screen = pg.display.set_mode((1000,800))
 pg.display.set_caption("Chess")
 running = True
-bgimg = pg.image.load('Chess_Board.png')
+bgimg = pg.image.load('board1.png')
 bgimg = pg.transform.scale(bgimg,(700,700))
 
 
@@ -42,12 +44,25 @@ bqueen = Units.Queen('.\\black\\black_queen.png',coords[0,3])
 bbishop1 = Units.Bishop('.\\black\\black_bishop.png',coords[0,2])
 bbishop2 = Units.Bishop('.\\black\\black_bishop.png',coords[0,5])
 bknight1 = Units.Knight('.\\black\\black_knight.png',coords[0,1])
+bknight2 = Units.Knight('.\\black\\black_knight.png',coords[0,6])
+brook1 = Units.Rook('.\\black\\black_rook.png',coords[0,0])
+brook2 = Units.Rook('.\\black\\black_rook.png',coords[0,7])
 
+bpawn1 = Units.Pawn('.\\black\\black_pawn.png',coords[1,0])
+bpawn2 = Units.Pawn('.\\black\\black_pawn.png',coords[1,1])
+bpawn3 = Units.Pawn('.\\black\\black_pawn.png',coords[1,2])
+bpawn4 = Units.Pawn('.\\black\\black_pawn.png',coords[1,3])
+bpawn5 = Units.Pawn('.\\black\\black_pawn.png',coords[1,4])
+bpawn6 = Units.Pawn('.\\black\\black_pawn.png',coords[1,5])
+bpawn7 = Units.Pawn('.\\black\\black_pawn.png',coords[1,6])
+bpawn8 = Units.Pawn('.\\black\\black_pawn.png',coords[1,7])
 
 while running == True:
     for event in pg.event.get():
         if event.type == pg.QUIT:
             running == False
+            pg.quit()
+            sys.exit()
             
     screen.fill((0,104,14))
     screen.blit(bgimg,(50,50))
@@ -73,6 +88,21 @@ while running == True:
 
     bking.Blit(screen)
     bqueen.Blit(screen)
+    bbishop1.Blit(screen)
+    bbishop2.Blit(screen)
+    bknight1.Blit(screen)
+    bknight2.Blit(screen)
+    brook1.Blit(screen)
+    brook2.Blit(screen)
+
+    bpawn1.Blit(screen)
+    bpawn2.Blit(screen)
+    bpawn3.Blit(screen)
+    bpawn4.Blit(screen)
+    bpawn5.Blit(screen)
+    bpawn6.Blit(screen)
+    bpawn7.Blit(screen)
+    bpawn8.Blit(screen)
 
     pg.event.get()
     pg.display.flip()

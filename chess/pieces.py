@@ -28,7 +28,9 @@ class Units:
         def __init__(self, img, pos):
             super().__init__(img, pos)
             self.first_move = False
-
+        
+        def move (self):
+            pass
     class Rook(Piece):
         def __init__(self, img, pos):
             super().__init__(img, pos)
