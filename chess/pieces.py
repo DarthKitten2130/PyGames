@@ -10,31 +10,34 @@ coords = np.array([[(65,70),(155,70),(240,70),(325,70),(410,70),(495,70),(580,70
                    [(65,580),(155,580),(240,580),(325,580),(410,580),(495,580),(580,580),(665,580)],
                    [(65,670),(155,670),(240,670),(325,670),(410,670),(495,670),(580,670),(665,670),]])
 
-class Piece:
-    def __init__(self,img,pos):
+class Piece(pg.sprite.Sprite):
+    def __init__(self,screen,img,pos,faction):
         self.piece = pg.image.load(img)
+        self.coord = pos
+        self.alive = True
+        self.colour = faction
         self.x = pos[0]
         self.y = pos[1]
-        self.alive = True
+        self.rect = self.piece.get_rect()
+        self.rect.center = self.coord
+        self.hitbox = (self.x,self.y,64,64)
+
     
     def Blit(self,screen):
 
-        screen.blit(self.piece,(self.x,self.y))
+        screen.blit(self.piece,self.coord)
+        rect = pg.Rect (self.coord,(64,64))
 
     
 class Units:
     
     class Pawn(Piece):
-        def __init__(self, img, pos):
-            super().__init__(img, pos)
-            self.first_move = False
         
         def move (self):
             pass
+
     class Rook(Piece):
-        def __init__(self, img, pos):
-            super().__init__(img, pos)
-            self.first_move = False
+        pass
 
     
     class Knight(Piece):
@@ -47,7 +50,5 @@ class Units:
         pass
     
     class King(Piece):
-        def __init__(self, img, pos):
-            super().__init__(img, pos)
-            self.first_move = False
+        pass
 
