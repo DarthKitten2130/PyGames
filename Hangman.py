@@ -1,5 +1,13 @@
 import random
 import turtle
+from os import chdir
+import platform
+os = platform.system()
+
+if os == 'Windows':
+        chdir('.\\words')
+elif os == 'Linux' or os == 'Darwin':
+        chdir('./words')
 
 # Variables:
 letters_done = []
@@ -27,10 +35,10 @@ while True:
     
     # Topic Choice
 
-    u = input('Which topic? Your choices are:\nanimals ')
+    u = input('Which topic? Your choices are:\nanimals\nfood ')
     v = input('Should we display vowels? Yes or no? ')
     
-    with open('animals.txt','rt') as f:
+    with open(f'{u}.txt','rt') as f:
         for line in f:
             nline =line.lower()
             nline = nline.replace('\n','')
