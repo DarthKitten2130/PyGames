@@ -1,18 +1,16 @@
+from os import chdir
+chdir('.\\chess')
 import pygame as pg
 import sys
-from os import chdir
-from pieces import Units
-from pieces import coords
-
+from chess.pieces import *
 
 # Board Setup
 pg.init()
 clock = pg.time.Clock()
 screen = pg.display.set_mode((1000,800))
 pg.display.set_caption("Chess")
-chdir('.\\chess')
 running = True
-bgimg = pg.image.load('board1.png')
+bgimg = pg.image.load('Chess_Board.png')
 bgimg = pg.transform.scale(bgimg,(700,700))
 
 
