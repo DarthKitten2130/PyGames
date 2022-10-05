@@ -69,12 +69,12 @@ while True:
     else:
         print('Error')
         continue
-    print(display.replace('-',' '))
+    print(display.replace('-','\t'))
 
     # Game
     done_word =[z for z in display if z != ' ']   
 
-    while word != ''.join(done_word).replace('-',' '):
+    while word != ''.join(done_word).replace('-','\t'):
         x = input('Enter a letter ').lower()
 
         if v.lower()=='yes':
