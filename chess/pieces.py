@@ -1,54 +1,50 @@
-import pygame as pg
-import numpy as np
+from chess.classes import *
+from pygame import display
 
-coords = np.array([[(65,70),(155,70),(240,70),(325,70),(410,70),(495,70),(580,70),(665,70)],
-                   [(65,150),(155,150),(240,150),(325,150),(410,150),(495,150),(580,150),(665,150)],
-                   [(65,240),(155,240),(240,240),(325,240),(410,240),(495,240),(580,240),(665,240)],
-                   [(65,325),(155,325),(240,325),(325,325),(410,325),(495,325),(580,325),(665,325)],
-                   [(65,410),(155,410),(240,410),(325,410),(410,410),(495,410),(580,410),(665,410)],
-                   [(65,500),(155,500),(240,500),(325,500),(410,500),(495,500),(580,500),(665,500)],
-                   [(65,580),(155,580),(240,580),(325,580),(410,580),(495,580),(580,580),(665,580)],
-                   [(65,670),(155,670),(240,670),(325,670),(410,670),(495,670),(580,670),(665,670),]])
+screen = display.set_mode((1000,775))
 
-class Piece(pg.sprite.Sprite):
-    def __init__(self,screen,img,pos,faction):
-        self.piece = pg.image.load(img)
-        self.coord = pos
-        self.alive = True
-        self.colour = faction
-        self.x = pos[0]
-        self.y = pos[1]
-        self.rect = self.piece.get_rect()
-        self.rect.center = self.coord
-        self.hitbox = (self.x,self.y,64,64)
+# Squares
+white = './squares/white.png'
+olive = './squares/olive.png'
+a8 = Square((50,50), white)
+b8 = Square((104.5,50),olive)
 
-    
-    def Blit(self,screen):
+# White
+wking = Units.King(screen,'./white/white_king.png',coords[7,4],'white')
+wqueen = Units.Queen(screen,'./white/white_queen.png',coords[7,3],'white')
+wbishop1 = Units.Bishop(screen,'./white/white_bishop.png',coords[7,2],'white')
+wbishop2 = Units.Bishop(screen,'./white/white_bishop.png',coords[7,5],'white')
+wknight1 = Units.Knight(screen,'./white/white_knight.png',coords[7,1],'white')
+wknight2 = Units.Knight(screen,'./white/white_knight.png',coords[7,6],'white')
+wrook1 = Units.Rook(screen,'./white/white_rook.png',coords[7,0],'white')
+wrook2 = Units.Rook(screen,'./white/white_rook.png',coords[7,7],'white')
 
-        screen.blit(self.piece,self.coord)
-        rect = pg.Rect (self.coord,(64,64))
+wpawn1 = Units.Pawn(screen,'./white/white_pawn.png',coords[6,0],'white')
+wpawn2 = Units.Pawn(screen,'./white/white_pawn.png',coords[6,1],'white')
+wpawn3 = Units.Pawn(screen,'./white/white_pawn.png',coords[6,2],'white')
+wpawn4 = Units.Pawn(screen,'./white/white_pawn.png',coords[6,3],'white')
+wpawn5 = Units.Pawn(screen,'./white/white_pawn.png',coords[6,4],'white')
+wpawn6 = Units.Pawn(screen,'./white/white_pawn.png',coords[6,5],'white')
+wpawn7 = Units.Pawn(screen,'./white/white_pawn.png',coords[6,6],'white')
+wpawn8 = Units.Pawn(screen,'./white/white_pawn.png',coords[6,7],'white')
 
-    
-class Units:
-    
-    class Pawn(Piece):
-        
-        def move (self):
-            pass
+# Black
+bking = Units.King(screen,'./black/black_king.png',coords[0,4],'black')
+bqueen = Units.Queen(screen,'./black/black_queen.png',coords[0,3],'black')
+bbishop1 = Units.Bishop(screen,'./black/black_bishop.png',coords[0,2],'black')
+bbishop2 = Units.Bishop(screen,'./black/black_bishop.png',coords[0,5],'black')
+bknight1 = Units.Knight(screen,'./black/black_knight.png',coords[0,1],'black')
+bknight2 = Units.Knight(screen,'./black/black_knight.png',coords[0,6],'black')
+brook1 = Units.Rook(screen,'./black/black_rook.png',coords[0,0],'black')
+brook2 = Units.Rook(screen,'./black/black_rook.png',coords[0,7],'black')
 
-    class Rook(Piece):
-        pass
-
-    
-    class Knight(Piece):
-        pass
-    
-    class Bishop(Piece):
-        pass
-    
-    class Queen(Piece):
-        pass
-    
-    class King(Piece):
-        pass
+bpawn1 = Units.Pawn(screen,'./black/black_pawn.png',coords[1,0],'black')
+bpawn2 = Units.Pawn(screen,'./black/black_pawn.png',coords[1,1],'black')
+bpawn3 = Units.Pawn(screen,'./black/black_pawn.png',coords[1,2],'black')
+bpawn4 = Units.Pawn(screen,'./black/black_pawn.png',coords[1,3],'black')
+bpawn4 = Units.Pawn(screen,'./black/black_pawn.png',coords[1,3],'black')
+bpawn5 = Units.Pawn(screen,'./black/black_pawn.png',coords[1,4],'black')
+bpawn6 = Units.Pawn(screen,'./black/black_pawn.png',coords[1,5],'black')
+bpawn7 = Units.Pawn(screen,'./black/black_pawn.png',coords[1,6],'black')
+bpawn8 = Units.Pawn(screen,'./black/black_pawn.png',coords[1,7],'black')
 

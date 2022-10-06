@@ -2,7 +2,7 @@ from os import chdir
 chdir('.\\chess')
 import pygame as pg
 import sys
-from chess.pieces import *
+from chess.classes import *
 
 # Board Setup
 pg.init()

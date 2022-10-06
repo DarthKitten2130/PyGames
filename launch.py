@@ -10,7 +10,8 @@ while True:
 
     game_names = {'rps':'rps',
                 'Hangman':'hangman',
-                'Tic Tac Toe':'tic_tac_toe','Chess':''}
+                'Tic Tac Toe':'tic_tac_toe',
+                'Chess':''}
 
     if os == 'Windows':
         game_names['Chess'] = 'chess_windows'
@@ -18,7 +19,7 @@ while True:
         game_names['Chess'] = 'chess_linux'
 
     print("Welcome to PyGames! Please choose a game to play!")
-    game = input("Your options are:\nRock, Paper, Scissors\nHangman\nTic Tac Toe\nChoose Wisely. ")
+    game = input("Your options are:\nRock, Paper, Scissors\nHangman\nTic Tac Toe\nChess\nChoose Wisely. ")
     
 
     
