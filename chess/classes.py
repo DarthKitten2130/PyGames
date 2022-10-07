@@ -53,7 +53,7 @@ squares = pg.sprite.Group()
 
 class Square(pg.sprite.Sprite):
 
-    def __init__(self,coords,image):
+    def __init__(self,image,coords):
         pg.sprite.Sprite.__init__(self)
         self.pos = coords
         self.color = pg.image.load(image)
