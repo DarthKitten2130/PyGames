@@ -5,9 +5,9 @@ import platform
 os = platform.system()
 
 if os == 'Windows':
-        chdir('.\\words')
+    chdir('.\\words')
 elif os == 'Linux' or os == 'Darwin':
-        chdir('./words')
+    chdir('./words')
 
 # Variables:
 letters_done = []
@@ -30,67 +30,67 @@ while True:
     turtle.title("Hangman")
     t = turtle.Turtle()
     t.penup()
-    t.goto(-200,-100)
+    t.goto(-200, -100)
     t.pendown()
-    
+
     # Topic Choice
 
     u = input('Which topic? Your choices are:\nanimals\nfood ')
     v = input('Should we display vowels? Yes or no? ')
-    
-    with open(f'{u}.txt','rt') as f:
+
+    with open(f'{u}.txt', 'rt') as f:
         for line in f:
-            nline =line.lower()
-            nline = nline.replace('\n','')
+            nline = line.lower()
+            nline = nline.replace('\n', '')
             Tlist.append(nline)
-    
+
     # Variables
     word = random.choice(Tlist)
     count = len(word)
     display = ""
 
     # Display
-    if v.lower()== 'no':
+    if v.lower() == 'no':
         for w in word:
-            if w==' ':
+            if w == ' ':
                 w = '-'
             else:
-              w = '_ '
+                w = '_ '
             display = display + w
-    elif v.lower()== 'yes':
+    elif v.lower() == 'yes':
         for w in word:
-            if w=='a' or w=='e' or w=='i' or w== 'o' or w=='u':
+            if w == 'a' or w == 'e' or w == 'i' or w == 'o' or w == 'u':
                 w = w + ' '
-            elif w==' ':
+            elif w == ' ':
                 w = '-'
             else:
-              w = '_ '
+                w = '_ '
             display = display + w
     else:
         print('Error')
         continue
-    print(display.replace('-','\t'))
+    print(display.replace('-', '\t'))
 
     # Game
-    done_word =[z for z in display if z != ' ']   
+    done_word = [z for z in display if z != ' ']
 
-    while word != ''.join(done_word).replace('-','\t'):
+    while word != ''.join(done_word).replace('-', '\t'):
         x = input('Enter a letter ').lower()
 
-        if v.lower()=='yes':
-            if x=='a' or x=='e' or x=='i' or x== 'o' or x=='u':
+        if v.lower() == 'yes':
+            if x == 'a' or x == 'e' or x == 'i' or x == 'o' or x == 'u':
                 print('Vowels are already shown')
                 continue
-                
-            elif x.isspace()==True or x.isnumeric()==True:
+
+            elif x.isspace() == True or x.isnumeric() == True:
                 print("Letters only")
                 continue
             elif letters_done.count(x) != 0:
                 print('Letter already used')
                 continue
-            elif word.count(x)==0:
+            elif word.count(x) == 0:
                 print("Incorrect")
-                strikes+=1
+                strikes += 1
                 try:
                     exec(shapes[strikes-1])
                 except:
@@ -99,28 +99,28 @@ while True:
 
             else:
                 letters_done.append(x)
-                y=0
+                y = 0
                 for w in word:
-                    if w==x:
+                    if w == x:
                         done_word.pop(y)
-                        done_word.insert(y,x)
-                    y+=1
+                        done_word.insert(y, x)
+                    y += 1
             i = ''
-            for w in ''.join(done_word).replace('-',' '):
+            for w in ''.join(done_word).replace('-', ' '):
                 w = w+' '
                 i = i+w
             print(i)
 
-        elif v.lower()=='no':
-            if x.isspace()==True or x.isnumeric()==True:
+        elif v.lower() == 'no':
+            if x.isspace() == True or x.isnumeric() == True:
                 print("Letters only")
                 continue
             elif letters_done.count(x) != 0:
                 print('Letter already used')
                 continue
-            elif word.count(x)==0:
+            elif word.count(x) == 0:
                 print("Incorrect")
-                strikes+=1
+                strikes += 1
                 try:
                     exec(shapes[strikes-1])
                 except:
@@ -129,19 +129,19 @@ while True:
 
             else:
                 letters_done.append(x)
-                y=0
+                y = 0
                 for w in word:
-                    if w==x:
+                    if w == x:
                         done_word.pop(y)
-                        done_word.insert(y,x)
-                    y+=1
+                        done_word.insert(y, x)
+                    y += 1
             i = ''
-            for w in ''.join(done_word).replace('-',' '):
+            for w in ''.join(done_word).replace('-', ' '):
                 w = w+' '
                 i = i+w
             print(i)
 
-    if word == ''.join(done_word).replace('-',' '):
+    if word == ''.join(done_word).replace('-', ' '):
         print('good job')
     else:
         print('Ha ha you lose')
