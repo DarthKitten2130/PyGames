@@ -20,6 +20,13 @@ running = True
 
 
 # Pieces
+
+units = ('wking', 'wqueen', 'wbishop1', 'wbishop2', 'wknight1', 'wknight2',
+          'wrook1', 'wrook2', 'wpawn1', 'wpawn2', 'wpawn3', 'wpawn4', 'wpawn5',
+          'wpawn6', 'wpawn7', 'wpawn8','bking', 'bqueen', 'bbishop1', 'bbishop2', 'bknight1', 'bknight2',
+          'brook1', 'brook2', 'bpawn1', 'bpawn2', 'bpawn3', 'bpawn4', 'bpawn5',
+          'bpawn6', 'bpawn7', 'bpawn8')
+
 whites = ('wking', 'wqueen', 'wbishop1', 'wbishop2', 'wknight1', 'wknight2',
           'wrook1', 'wrook2', 'wpawn1', 'wpawn2', 'wpawn3', 'wpawn4', 'wpawn5',
           'wpawn6', 'wpawn7', 'wpawn8')
@@ -42,6 +49,9 @@ start_squares = ( 'a1','b1','c1','d1','e1','f1','g1','h1',
             'a7','b7','c7','d7','e7','f7','g7','h7',
             'a8','b8','c8','d8','e8','f8','g8','h8')
 
+for square in start_squares:
+    exec(square+'.has_piece = True')
+
 turn = 'white'
 
 while running == True:
@@ -62,8 +72,10 @@ while running == True:
 
         for unit in blacks:
             exec(unit+'.Blit(screen)')
-        
-        
+                
+        for square in squares:
+            for unit in units:
+                exec(square+f'.Has_Piece({unit})')
         # Turns
 
     pg.event.get()

@@ -27,6 +27,9 @@ class Piece(pg.sprite.Sprite):
         screen.blit(self.img,self.coord)
     
 
+    def Select(self):
+        pass        
+
 class Pawn(Piece):
 
     def move(self):
@@ -55,9 +58,14 @@ class Square(pg.sprite.Sprite):
         self.pos = coords
         self.color = pg.image.load(image)
         self.has_piece = False
+        self.rect = self.color.get_rect()
         
     
 
     def Blit(self,scn):
         scn.blit(self.color,self.pos)
 
+
+    def Has_Piece(self,piece):
+        if self.rect.colliderect(piece):
+            self.has_piece = True
