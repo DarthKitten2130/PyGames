@@ -32,7 +32,7 @@ class Piece(pg.sprite.Sprite):
 
 class Pawn(Piece):
 
-    def move(self):
+    def Move(self):
         pass
 
 class Rook(Piece):
@@ -66,6 +66,6 @@ class Square(pg.sprite.Sprite):
         scn.blit(self.color,self.pos)
 
 
-    def Has_Piece(self,piece):
+    def Has_Unit(self,piece):
         if self.rect.colliderect(piece):
             self.has_piece = True
