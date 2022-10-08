@@ -1,6 +1,6 @@
 import pygame as pg
 import numpy as np
-
+from chess_launch import squares
 coords = np.array([[(60,60),(145,60),(225,60),(310,60),(390,60),(470,60),(550,60),(630,60)],
                    [(60,145),(145,145),(225,145),(310,145),(390,145),(470,145),(550,145),(630,145)],
                    [(60,225),(145,225),(225,225),(310,225),(390,225),(470,225),(550,225),(630,225)],
@@ -10,6 +10,8 @@ coords = np.array([[(60,60),(145,60),(225,60),(310,60),(390,60),(470,60),(550,60
                    [(60,550),(145,550),(225,550),(310,550),(390,550),(470,550),(550,550),(630,550)],
                    [(60,630),(145,630),(225,630),(310,630),(390,630),(470,630),(550,630),(630,630),]])
 
+
+
 class Piece(pg.sprite.Sprite):
     def __init__(self,screen,img,pos,faction):
         pg.sprite.Sprite.__init__(self)
@@ -18,22 +20,27 @@ class Piece(pg.sprite.Sprite):
         self.alive = True
         self.moved = False
         self.colour = faction
-        self.rect = self.img.get_rect()
+        self.rect = self.img.get_rect(topleft = pos)
 
 
     
     def Blit(self,screen):
 
         screen.blit(self.img,self.coord)
-    
-
-    def Select(self):
-        pass        
+            
 
 class Pawn(Piece):
 
-    def Move(self):
-        pass
+    def Select(self,mouse):
+        if  self.rect.collidepoint(mouse):
+            if self.moved == True and self.colour == 'white':
+                selected_squares = [squares[c] for c in squares.keys() if c ==coords[self.coord[0]+1,self.coord[1]]]
+                print(selected_squares)
+                #for c in squares.keys():
+                   # if c == coords[self.coord[0]+1,self.coord[1]]:
+                        
+
+
 
 class Rook(Piece):
     pass
