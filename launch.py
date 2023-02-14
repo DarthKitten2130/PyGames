@@ -13,12 +13,8 @@ while True:
     game_names = {'rps': 'rps',
                   'Hangman': 'hangman',
                   'Tic Tac Toe': 'tic_tac_toe',
-                  'Chess': ''}
+                  'Chess': 'chess.chess_launch'}
 
-    if os == 'Windows':
-        game_names['Chess'] = 'chess_windows'
-    elif os == 'Linux' or os == 'Darwin':
-        game_names['Chess'] = 'chess_linux'
 
     print("Welcome to PyGames! Please choose a game to play!")
     game = input(
