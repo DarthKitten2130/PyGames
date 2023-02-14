@@ -74,4 +74,3 @@ while running == True:
     pg.event.get()
     pg.display.flip()
     pg.display.update()
-quit

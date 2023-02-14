@@ -1,10 +1,10 @@
 import pygame as pg
-import numpy as np
 import os
 
+# Changes the Directory of the file
 os.chdir(r'C:\\Users\\darth\\Desktop\\Python_Programs\\PyGames\\PyGames\\chess')
 
-
+# class for the board Squares
 class Square(pg.sprite.Sprite):
 
     def __init__(self,image,coords):
@@ -28,6 +28,8 @@ class Square(pg.sprite.Sprite):
 # Squares
 white = '.\\squares\\white.png'
 olive = '.\\squares\\olive.png'
+
+
 a8 = Square(white, (50, 50))
 b8 = Square(olive, (131.75, 50))
 c8 = Square(white, (213.5, 50))
@@ -93,7 +95,8 @@ f1 = Square(white, (458.75, 622.25))
 g1 = Square(olive, (540.5, 622.25))
 h1 = Square(white, (622.25, 622.25))
 
-coords =[[(60,60),(145,60),(225,60),(310,60),(390,60),(470,60),(550,60),(630,60)],
+# Coordinates relative to PyGame screen for each squares
+coords =[[          (60,60), (145,60), (225,60), (310,60), (390,60), (470,60), (550,60), (630,60)],
                    [(60,145),(145,145),(225,145),(310,145),(390,145),(470,145),(550,145),(630,145)],
                    [(60,225),(145,225),(225,225),(310,225),(390,225),(470,225),(550,225),(630,225)],
                    [(60,310),(145,310),(225,310),(310,310),(390,310),(470,310),(550,310),(630,310)],
@@ -102,14 +105,15 @@ coords =[[(60,60),(145,60),(225,60),(310,60),(390,60),(470,60),(550,60),(630,60)
                    [(60,550),(145,550),(225,550),(310,550),(390,550),(470,550),(550,550),(630,550)],
                    [(60,630),(145,630),(225,630),(310,630),(390,630),(470,630),(550,630),(630,630)]]
 
-squares = {coords[7][7]:a1,
-           coords[6][7]:b1,
-           coords[5][7]:c1,
-           coords[4][7]:d1,
-           coords[3][7]:e1,
-           coords[2][7]:f1,
-           coords[1][7]:g1,
-           coords[0][7]:h1,
+# Maps the coords to their respective square
+squares = {coords[7][7]:    a1,
+           coords[6][7]:    b1,
+           coords[5][7]:    c1,
+           coords[4][7]:    d1,
+           coords[3][7]:    e1,
+           coords[2][7]:    f1,
+           coords[1][7]:    g1,
+           coords[0][7]:    h1,
            coords[7][6]:	a2,
            coords[6][6]:	b2,
            coords[5][6]:	c2,
