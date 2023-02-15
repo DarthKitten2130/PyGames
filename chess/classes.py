@@ -26,12 +26,13 @@ class Pawn(Piece):
 
     def Select(self,mouse):
         if  self.rect.collidepoint(mouse):
-            if self.moved == True and self.colour == 'white':
+            print("Hi")
+            '''if self.moved == True and self.colour == 'white':
                 selected_squares = [squares[c] for c in squares.keys() if c ==coords[self.coord[0]+1,self.coord[1]]]
                 print(selected_squares)
                 #for c in squares.keys():
                    # if c == coords[self.coord[0]+1,self.coord[1]]:
-                        
+                    '''    
 
 
 

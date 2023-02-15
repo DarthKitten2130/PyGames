@@ -1,7 +1,5 @@
 import platform
-
-os = platform.system()
-
+import os
 
 def imp(name):
     module = __import__(name)
@@ -19,5 +17,9 @@ while True:
     print("Welcome to PyGames! Please choose a game to play!")
     game = input(
         "Your options are:\nRock, Paper, Scissors\nHangman\nTic Tac Toe\nChess\nChoose Wisely. ")
+
+    if game == 'Chess':
+        os.chdir(r'C:\\Users\\darth\\Desktop\\Python_Programs\\PyGames\\PyGames\\chess')
+
 
     imp(game_names[game])
