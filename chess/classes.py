@@ -2,8 +2,7 @@ import pygame as pg
 from board import squares
 from pieces import *
 
-
-
+troop,name = ' ',' '
 
 class Piece(pg.sprite.Sprite):
     def __init__(self,screen,img,pos,faction):
@@ -20,6 +19,18 @@ class Piece(pg.sprite.Sprite):
     def Blit(self,screen):
 
         screen.blit(self.img,self.coord)
+    
+    
+    def check_click(self,mouse,x):
+        global troop,name
+        if self.rect.collidepoint(mouse):
+            print("HIT")
+            troop = self
+            for lst in x:
+                for unit in lst:
+                    if unit is self:
+                        name = x[lst]
+        return troop,name
             
 
 class Pawn(Piece):
