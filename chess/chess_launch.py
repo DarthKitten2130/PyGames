@@ -65,7 +65,7 @@ h2:
 # Text and Fonts
 white_rgb = (255,255,255)
 black_rgb = (0,0,0)
-myfont = pg.font.SysFont("Times New Roman",20)
+myfont = pg.font.SysFont("Times New Roman",30,bold=True)
 
 
 
@@ -92,7 +92,7 @@ while running == True:
         
         if event.type == pg.MOUSEBUTTONUP:
              for s in units:
-                 unity, y = s.check_click(event.pos,x=names)
+                 unit, y, color = s.check_click(event.pos,x=names)
 
         if event.type == pg.QUIT:
                     running == False
@@ -100,8 +100,8 @@ while running == True:
                     sys.exit()
         
         try:
-            label = myfont.render(y,1,white_rgb)
-            screen.blit(label,(800,100))
+            label = myfont.render(y,1,color)
+            screen.blit(label,(336.125,740))
         except:
             pass
 
