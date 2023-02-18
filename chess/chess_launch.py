@@ -36,11 +36,6 @@ names = {(wking,bking): "King",(wqueen,bqueen): "Queen",(wbishop1,wbishop2,bbish
          (wpawn1,wpawn2,wpawn3,wpawn4,wpawn5,wpawn6,wpawn7,wpawn8,bpawn1,bpawn2,bpawn3,bpawn4,bpawn5,
           bpawn6,bpawn7,bpawn8): "Pawn"}
 
-start_squares = pg.sprite.Group( a1,b1,c1,d1,e1,f1,g1,h1,
-                  a2,b2,c2,d2,e2,f2,g2,h2,
-                  a7,b7,c7,d7,e7,f7,g7,h7,
-                  a8,b8,c8,d8,e8,f8,g8,h8)
-
 '''
 location = {a1: wrook2,
 a2: ,
@@ -69,7 +64,10 @@ myfont = pg.font.SysFont("Times New Roman",30,bold=True)
 
 
 
-for square in start_squares:
+for square in pg.sprite.Group( a1,b1,c1,d1,e1,f1,g1,h1,
+                  a2,b2,c2,d2,e2,f2,g2,h2,
+                  a7,b7,c7,d7,e7,f7,g7,h7,
+                  a8,b8,c8,d8,e8,f8,g8,h8):
     square.has_piece = True
 
 turn = 'white'
@@ -90,10 +88,15 @@ while running == True:
         
         
         
-        if event.type == pg.MOUSEBUTTONUP:
+        if event.type == pg.MOUSEBUTTONDOWN:
              for s in units:
-                 unit, y, color = s.check_click(event.pos,x=names)
-
+                unit, y, color = s.Check_Click(event.pos,x=names)
+                 
+                # Moves Unit
+                try:
+                    setattr(unit,'coord',coords[4][5])
+                except:
+                     pass
         if event.type == pg.QUIT:
                     running == False
                     pg.quit()

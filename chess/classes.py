@@ -21,10 +21,10 @@ class Piece(pg.sprite.Sprite):
         screen.blit(self.img,self.coord)
     
     
-    def check_click(self,mouse,x):
-        global troop,name,rgb
+    def Check_Click(self,mouse,x):
+        global troop,name
         if self.rect.collidepoint(mouse):
-            print("HIT")
+            print("mew")
             troop = self
             for lst in x:
                 for unit in lst:
