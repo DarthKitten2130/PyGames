@@ -105,7 +105,7 @@ while running == True:
                     print(new_pos)
                     # Moves Unit
                 try:
-                    setattr(unit,'coord',(60,60))
+                    setattr(unit,'coord',new_pos[0])
                 except:
                     pass
             except:
