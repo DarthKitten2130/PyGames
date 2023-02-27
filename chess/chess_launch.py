@@ -1,11 +1,13 @@
 import os
 import sys
+from pathlib import Path
 import pygame as pg
 from board import *
 from pieces import *
 
 # Sets File Directory
-os.chdir(r'C:\\Users\\darth\\Desktop\\Python_Programs\\PyGames\\PyGames\\chess')
+mod_path = Path(__file__).parent
+os.chdir(mod_path)
 
 # Board Setup
 pg.init()
@@ -56,7 +58,7 @@ while running == True:
 
         screen.fill((0, 104, 14))
 
-        # Renders in Board
+        # Renders in board
         for square in squares.values():
             square.Blit(screen)
 
@@ -77,14 +79,11 @@ while running == True:
             occupied = getattr(sq,'has_piece')
             if occupied == False:
                 new_pos = [z for z in squares if squares[z] == sq]
-                print(new_pos)
-                    # Moves Unit
-                    
+                print(new_pos)   
+                
+                # Moves Unit  
                 setattr(unit,'coord',new_pos[0])
                 
-            '''except:
-                 pass
-            '''
         # Exit Sequence
         if event.type == pg.QUIT:
                     running == False

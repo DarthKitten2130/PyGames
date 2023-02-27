@@ -2,11 +2,7 @@ from pygame import display
 from classes import King,Queen,Bishop,Knight,Rook,Pawn
 from board import coords
 
-
 screen = display.set_mode((1000, 775))
-
-
-
 
 # White
 wking = King(screen, '.\\white\\white_king.png', coords[7][4], 'white')

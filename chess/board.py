@@ -1,8 +1,11 @@
-import pygame as pg
 import os
+from pathlib import Path
+import pygame as pg
+
 
 # Changes the Directory of the file
-os.chdir(r'C:\\Users\\darth\\Desktop\\Python_Programs\\PyGames\\PyGames\\chess')
+new_path = Path(__file__).parent
+os.chdir(new_path)
 
 # class for the board Squares
 
