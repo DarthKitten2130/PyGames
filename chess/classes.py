@@ -22,7 +22,7 @@ class Piece(pg.sprite.Sprite):
     
     
     def Check_Click(self,mouse,x):
-        global troop,name
+        global troop,name,rgb
         if self.rect.collidepoint(mouse):
             print("mew")
             troop = self

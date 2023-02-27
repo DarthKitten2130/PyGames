@@ -31,6 +31,9 @@ units = pg.sprite.Group(wking, wqueen, wbishop1, wbishop2, wknight1, wknight2,
            brook1,brook2, bpawn1, bpawn2, bpawn3, bpawn4, bpawn5,
           bpawn6, bpawn7, bpawn8)
 
+
+squares_list = pg.sprite.Group(squares.values())
+
 names = {(wking,bking): "King",(wqueen,bqueen): "Queen",(wbishop1,wbishop2,bbishop1,bbishop2): "Bishop",
          (wknight1,wknight2,bknight1,bknight2): "Knight",(wrook1,wrook2,brook1,brook2): "Rook",
          (wpawn1,wpawn2,wpawn3,wpawn4,wpawn5,wpawn6,wpawn7,wpawn8,bpawn1,bpawn2,bpawn3,bpawn4,bpawn5,
@@ -89,14 +92,24 @@ while running == True:
         
         
         if event.type == pg.MOUSEBUTTONDOWN:
-             for s in units:
+            for s in units:
                 unit, y, color = s.Check_Click(event.pos,x=names)
-                 
-                # Moves Unit
+
+        
+            for q in squares_list:
+                    sq = q.Check_Click_Square(event.pos)
+            try:
+                h = getattr(sq,'has_piece')
+                if h == False:
+                    new_pos = [z for z in squares if squares[z] == sq]
+                    print(new_pos)
+                    # Moves Unit
                 try:
-                    setattr(unit,'coord',coords[4][5])
+                    setattr(unit,'coord',(60,60))
                 except:
-                     pass
+                    pass
+            except:
+                 pass
         if event.type == pg.QUIT:
                     running == False
                     pg.quit()
