@@ -39,27 +39,6 @@ names = {(wking,bking): "King",(wqueen,bqueen): "Queen",(wbishop1,wbishop2,bbish
          (wpawn1,wpawn2,wpawn3,wpawn4,wpawn5,wpawn6,wpawn7,wpawn8,bpawn1,bpawn2,bpawn3,bpawn4,bpawn5,
           bpawn6,bpawn7,bpawn8): "Pawn"}
 
-'''
-location = {a1: wrook2,
-a2: ,
-b1: wknight2,
-c1:,
-d1:,
-e1:,
-f1:,
-g1:,
-h1:,
-a2:,
-b2:,
-c2:,
-d2:,
-e2:,
-f2:,
-g2:,
-h2:
-}
-'''
-
 # Text and Fonts
 white_rgb = (255,255,255)
 black_rgb = (0,0,0)
