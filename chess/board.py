@@ -121,12 +121,12 @@ coords =[[          (60,60), (145,60), (225,60), (310,60), (390,60), (470,60), (
 
 
 squares = {
-coords[7][7]:   h1, coords[7][6]:	h2, coords[7][5]:	h3, coords[7][4]:	h4, coords[7][3]:	h5, coords[7][2]:	h6, coords[7][1]:	h7, coords[7][0]:	h8,
-coords[6][7]:   g1, coords[6][6]:	g2, coords[6][5]:	g3, coords[6][4]:	g4, coords[6][3]:	g5, coords[6][2]:	g6, coords[6][1]:	g7, coords[6][0]:	g8,
-coords[5][7]:   f1, coords[5][6]:	f2, coords[5][5]:	f3, coords[5][4]:	f4, coords[5][3]:	f5, coords[5][2]:	f6, coords[5][1]:	f7, coords[5][0]:	f8,
-coords[4][7]:   e1, coords[4][6]:	e2, coords[4][5]:	e3, coords[4][4]:	e4, coords[4][3]:	e5, coords[4][2]:	e6, coords[4][1]:	e7,  coords[4][0]:	e8,
-coords[3][7]:   d1, coords[3][6]:	d2, coords[3][5]:	d3, coords[3][4]:	d4, coords[3][3]:	d5, coords[3][2]:	d6, coords[3][1]:	d7, coords[3][0]:	d8,
-coords[2][7]:    c1, coords[2][6]:	c2, coords[2][5]:	c3, coords[2][4]:	c4, coords[2][3]:	c5, coords[2][2]:	c6, coords[2][1]:	c7, coords[2][0]:	c8,
-coords[1][7]:    b1, coords[1][6]:	b2, coords[1][5]:	b3, coords[1][4]:	b4, coords[1][3]:	b5, coords[1][2]:	b6, coords[1][1]:	b7, coords[1][0]:   b8,
-coords[0][7]:    a1, coords[0][6]:	a2, coords[0][5]:	a3, coords[0][4]:	a4, coords[0][3]:	a5, coords[0][2]:	a6,  coords[0][1]:	a7, coords[0][0]:	a8
+coords[7][7]:   h1, coords[7][6]:	g1, coords[7][5]:	f1, coords[7][4]:	e1, coords[7][3]:	d1, coords[7][2]:	c1, coords[7][1]:	b1, coords[7][0]:	a1,
+coords[6][7]:   h2, coords[6][6]:	g2, coords[6][5]:	f2, coords[6][4]:	e2, coords[6][3]:	d2, coords[6][2]:	c2, coords[6][1]:	b2, coords[6][0]:	a2,
+coords[5][7]:   h3, coords[5][6]:	g3, coords[5][5]:	f3, coords[5][4]:	e3, coords[5][3]:	d3, coords[5][2]:	c3, coords[5][1]:	b3, coords[5][0]:	a3,
+coords[4][7]:   h4, coords[4][6]:	g4, coords[4][5]:	f4, coords[4][4]:	e4, coords[4][3]:	d4, coords[4][2]:	c4, coords[4][1]:	b4,  coords[4][0]:	a4,
+coords[3][7]:   h5, coords[3][6]:	g5, coords[3][5]:	f5, coords[3][4]:	e5, coords[3][3]:	d5, coords[3][2]:	c5, coords[3][1]:	b5, coords[3][0]:	a5,
+coords[2][7]:    h6, coords[2][6]:	g6, coords[2][5]:	f6, coords[2][4]:	e6, coords[2][3]:	d6, coords[2][2]:	c6, coords[2][1]:	b6, coords[2][0]:	a6,
+coords[1][7]:    h7, coords[1][6]:	g7, coords[1][5]:	f7, coords[1][4]:	e7, coords[1][3]:	d7, coords[1][2]:	c7, coords[1][1]:	b7, coords[1][0]:   a7,
+coords[0][7]:    h8, coords[0][6]:	g8, coords[0][5]:	f8, coords[0][4]:	e8, coords[0][3]:	d8, coords[0][2]:	c8,  coords[0][1]:	b8, coords[0][0]:	a8
 }
