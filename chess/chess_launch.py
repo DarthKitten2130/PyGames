@@ -73,12 +73,11 @@ def Play():
 
     '''Checks whether each square has a piece on it by 
        cross-referencing the piece rects with the Square Rects'''
-    for square in squares_list:
-        for unit in units:
-            square.Has_Unit(unit.rect)
     
-    print(e2.has_piece)
-
+    try:
+        print(sq.has_piece)
+    except:
+         pass
     # Creates Name
     try:
         label = myfont.render(y,1,color)
@@ -96,10 +95,14 @@ while running == True:
         # Game
         label1 = Play()
         turn = 'black'
-        
+        for square in squares_list:
+            for unit in units:
+                square.Has_Unit(unit.rect)
         label1 = Play()
         turn = 'white'
-
+        for square in squares_list:
+                for unit in units:
+                    square.Has_Unit(unit.rect)
         # Renders in board
         for square in squares.values():
             square.Blit(screen)

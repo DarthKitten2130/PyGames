@@ -5,7 +5,7 @@ from pieces import *
 troop,name,rgb = ' ',' ',' '
 
 class Piece(pg.sprite.Sprite):
-    def __init__(self,screen,img,pos,faction):
+    def __init__(self,space,img,pos,faction):
         pg.sprite.Sprite.__init__(self)
         self.img = pg.image.load(img)
         self.coord = pos
@@ -13,6 +13,7 @@ class Piece(pg.sprite.Sprite):
         self.moved = False
         self.colour = faction
         self.rect = self.img.get_rect(topleft = pos)
+        self.space = space
 
 
     
