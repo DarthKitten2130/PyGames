@@ -27,7 +27,10 @@ class Square(pg.sprite.Sprite):
 
     def Has_Unit(self,piece):
         if self.rect.colliderect(piece):
-            self.has_piece = True
+            setattr(self,'has_piece',True)
+        
+        else:
+            setattr(self,'has_piece',False)
     
     
     

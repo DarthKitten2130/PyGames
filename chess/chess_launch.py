@@ -51,24 +51,11 @@ for square in pg.sprite.Group( a1,b1,c1,d1,e1,f1,g1,h1,
     square.has_piece = True
 
 turn = 'white'
+label = ''
 
-while running == True:
-    # Setup
-    for event in pg.event.get():
-
-        screen.fill((0, 104, 14))
-
-        # Renders in board
-        for square in squares.values():
-            square.Blit(screen)
-
-        # Renders in units
-        for unit in units:
-            unit.Blit(screen)
-        
-        
-        
-        if event.type == pg.MOUSEBUTTONDOWN:
+def Play():
+    global turn,label
+    if event.type == pg.MOUSEBUTTONDOWN:
             for s in units:
                 unit, y, color = s.Check_Click(event.pos,x=names)
 
@@ -79,11 +66,48 @@ while running == True:
             occupied = getattr(sq,'has_piece')
             if occupied == False:
                 new_pos = [z for z in squares if squares[z] == sq]
-                print(new_pos)   
+                print(new_pos)
                 
                 # Moves Unit  
                 setattr(unit,'coord',new_pos[0])
-                
+
+    '''Checks whether each square has a piece on it by 
+       cross-referencing the piece rects with the Square Rects'''
+    for square in squares_list:
+        for unit in units:
+            square.Has_Unit(unit.rect)
+    
+    print(e2.has_piece)
+
+    # Creates Name
+    try:
+        label = myfont.render(y,1,color)
+    except NameError:
+        pass
+    return label
+
+while running == True:
+    # Setup
+    for event in pg.event.get():
+
+        # BG Colour
+        screen.fill((0, 104, 14))
+
+        # Game
+        label1 = Play()
+        turn = 'black'
+        
+        label1 = Play()
+        turn = 'white'
+
+        # Renders in board
+        for square in squares.values():
+            square.Blit(screen)
+
+        # Renders in units
+        for unit in units:
+            unit.Blit(screen)
+        
         # Exit Sequence
         if event.type == pg.QUIT:
                     running == False
@@ -92,13 +116,11 @@ while running == True:
         
         # Piece Labelling System
         try:
-            label = myfont.render(y,1,color)
-            screen.blit(label,(336.125,740))
-        except NameError:
-            pass
-
-        for unit in units:
-            square.Has_Unit(unit.rect)
+            screen.blit(label1,(336.125,740))
+        except:
+             pass
+        
+        
     pg.event.get()
     pg.display.flip()
     pg.display.update()
