@@ -31,7 +31,7 @@ units = pg.sprite.Group(wking, wqueen, wbishop1, wbishop2, wknight1, wknight2,
           wpawn6, wpawn7, wpawn8,bking, bqueen, bbishop1, bbishop2, bknight1, bknight2,
            brook1,brook2, bpawn1, bpawn2, bpawn3, bpawn4, bpawn5,
           bpawn6, bpawn7, bpawn8)
-squares_list = pg.sprite.Group(squares.values())
+squares_list = pg.sprite.Group(squares.keys())
 names = {(wking,bking): "King",(wqueen,bqueen): "Queen",(wbishop1,wbishop2,bbishop1,bbishop2): "Bishop",
          (wknight1,wknight2,bknight1,bknight2): "Knight",(wrook1,wrook2,brook1,brook2): "Rook",
          (wpawn1,wpawn2,wpawn3,wpawn4,wpawn5,wpawn6,wpawn7,wpawn8,bpawn1,bpawn2,bpawn3,bpawn4,bpawn5,
@@ -65,14 +65,13 @@ def Play():
             
             occupied = getattr(sq,'has_piece')
             if occupied == False:
-                new_pos = [z for z in squares if squares[z] == sq]
+                new_pos = squares[sq]
                 print(new_pos)
                 
                 # Moves Unit  
-                setattr(unit,'coord',new_pos[0])
+                setattr(unit,'coord',new_pos)
 
-    '''Checks whether each square has a piece on it by 
-       cross-referencing the piece rects with the Square Rects'''
+    
     
     try:
         print(sq.has_piece)
@@ -100,11 +99,13 @@ while running == True:
                 square.Has_Unit(unit.rect)
         label1 = Play()
         turn = 'white'
+        '''Checks whether each square has a piece on it by 
+       cross-referencing the piece rects with the Square Rects'''
         for square in squares_list:
                 for unit in units:
                     square.Has_Unit(unit.rect)
         # Renders in board
-        for square in squares.values():
+        for square in squares.keys():
             square.Blit(screen)
 
         # Renders in units
