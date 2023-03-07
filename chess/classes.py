@@ -1,25 +1,23 @@
 import pygame as pg
 from board import squares
-from pieces import *
+
 
 troop,name,rgb = ' ',' ',' '
 
 class Piece(pg.sprite.Sprite):
-    def __init__(self,space,img,pos,faction):
+    def __init__(self,space,img,faction):
         pg.sprite.Sprite.__init__(self)
         self.img = pg.image.load(img)
-        self.coord = pos
         self.alive = True
         self.moved = False
         self.colour = faction
-        self.rect = self.img.get_rect(topleft = pos)
         self.space = space
-
+        self.rect = self.img.get_rect(topleft = squares[self.space])
 
     
     def Blit(self,screen):
 
-        screen.blit(self.img,self.coord)
+        screen.blit(self.img,squares[self.space])
     
     
     def Check_Click(self,mouse,x):
@@ -28,9 +26,8 @@ class Piece(pg.sprite.Sprite):
             print("mew")
             troop = self
             for lst in x:
-                for unit in lst:
-                    if unit is self:
-                        name = x[lst]
+                if self in lst:
+                    name = x[lst]
             if self.colour == 'white':
                 rgb = (255,255,255)
             elif self.colour == 'black':

@@ -65,11 +65,10 @@ def Play():
             
             occupied = getattr(sq,'has_piece')
             if occupied == False:
-                new_pos = squares[sq]
-                print(new_pos)
-                
-                # Moves Unit  
-                setattr(unit,'coord',new_pos)
+
+                # Moves Unit
+
+                setattr(unit,'space',sq)
 
     
     

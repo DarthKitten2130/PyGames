@@ -16,7 +16,7 @@ class Square(pg.sprite.Sprite):
         pg.sprite.Sprite.__init__(self)
         self.pos = coords
         self.color = pg.image.load(image)
-        self.has_piece = False
+        #self.piece = troop
         self.rect = self.color.get_rect(topleft = coords)
         
     
