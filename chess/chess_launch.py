@@ -31,11 +31,12 @@ units = pg.sprite.Group(wking, wqueen, wbishop1, wbishop2, wknight1, wknight2,
           wpawn6, wpawn7, wpawn8,bking, bqueen, bbishop1, bbishop2, bknight1, bknight2,
            brook1,brook2, bpawn1, bpawn2, bpawn3, bpawn4, bpawn5,
           bpawn6, bpawn7, bpawn8)
-squares_list = pg.sprite.Group(squares.keys())
 names = {(wking,bking): "King",(wqueen,bqueen): "Queen",(wbishop1,wbishop2,bbishop1,bbishop2): "Bishop",
          (wknight1,wknight2,bknight1,bknight2): "Knight",(wrook1,wrook2,brook1,brook2): "Rook",
          (wpawn1,wpawn2,wpawn3,wpawn4,wpawn5,wpawn6,wpawn7,wpawn8,bpawn1,bpawn2,bpawn3,bpawn4,bpawn5,
           bpawn6,bpawn7,bpawn8): "Pawn"}
+squares_list = pg.sprite.Group(squares.keys())
+
 
 # Text and Fonts
 white_rgb = (255,255,255)
@@ -61,10 +62,13 @@ def Play():
 
         
             for q in squares_list:
-                    sq = q.Check_Click_Square(event.pos)
+                    try:
+                        sq = q.Check_Click_Square(event.pos)
+                    except NameError:
+                         continue
             
             occupied = getattr(sq,'has_piece')
-            if occupied == False:
+            if occupied is False:
 
                 # Moves Unit
 
@@ -89,20 +93,7 @@ while running == True:
 
         # BG Colour
         screen.fill((0, 104, 14))
-
-        # Game
-        label1 = Play()
-        turn = 'black'
-        for square in squares_list:
-            for unit in units:
-                square.Has_Unit(unit.rect)
-        label1 = Play()
-        turn = 'white'
-        '''Checks whether each square has a piece on it by 
-       cross-referencing the piece rects with the Square Rects'''
-        for square in squares_list:
-                for unit in units:
-                    square.Has_Unit(unit.rect)
+        
         # Renders in board
         for square in squares.keys():
             square.Blit(screen)
@@ -111,11 +102,34 @@ while running == True:
         for unit in units:
             unit.Blit(screen)
         
+
+        # Game
+        label1 = Play()
+
+        turn = 'black'
+        
+        for square in squares_list:
+            for unit in units:
+                square.Has_Unit(unit.rect)
+        
+        label1 = Play()
+        
+        turn = 'white'
+        
+        '''Checks whether each square has a piece on it by 
+       cross-referencing the piece rects with the Square Rects'''
+        
+        for square in squares_list:
+                for unit in units:
+                    square.Has_Unit(unit.rect)
+       
+        
         # Exit Sequence
         if event.type == pg.QUIT:
                     running == False
                     pg.quit()
                     sys.exit()
+        
         
         # Piece Labelling System
         try:

@@ -9,22 +9,20 @@ os.chdir(new_path)
 
 # class for the board Squares
 
-poly = ' '
 class Square(pg.sprite.Sprite):
 
     def __init__(self,image,coords):
         pg.sprite.Sprite.__init__(self)
         self.pos = coords
         self.color = pg.image.load(image)
-        #self.piece = troop
         self.rect = self.color.get_rect(topleft = coords)
         
     
-
+    # Renders Squares onto the Pygame Screen
     def Blit(self,scn):
         scn.blit(self.color,self.pos)
 
-
+    # Checks if Square has a Unit on it
     def Has_Unit(self,piece):
         if self.rect.colliderect(piece):
             setattr(self,'has_piece',True)
@@ -33,10 +31,9 @@ class Square(pg.sprite.Sprite):
             setattr(self,'has_piece',False)
     
     
-    
+    # Function that checks if the player mouse has hit a Square and initialises said Square
     def Check_Click_Square(self,mouse):
-        global poly
-
+    
         if self.rect.collidepoint(mouse):
             print("HIT")
             poly = self

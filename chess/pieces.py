@@ -1,8 +1,5 @@
-from pygame import display
 from classes import King,Queen,Bishop,Knight,Rook,Pawn
 from board import *
-
-screen = display.set_mode((1000, 775))
 
 # White
 wking = King(e1, '.\\white\\white_king.png','white')
