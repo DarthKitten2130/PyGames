@@ -41,8 +41,8 @@ class Square(pg.sprite.Sprite):
 
 
 # Squares
-white = '.\\squares\\white.png'
-olive = '.\\squares\\olive.png'
+white = os.path.join('.','squares','white.png')
+olive = os.path.join('.','squares','olive.png')
 
 
 a8 = Square(white, (50, 50))
