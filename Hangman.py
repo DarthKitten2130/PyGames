@@ -75,76 +75,47 @@ while True:
     done_word = [z for z in display if z != ' ']
 
     while word != ''.join(done_word).replace('-', '\t'):
-        x = input('Enter a letter ').lower()
+         x = input('Enter a letter ').lower()
 
-        if v.lower() == 'yes':
-            if x == 'a' or x == 'e' or x == 'i' or x == 'o' or x == 'u':
-                print('Vowels are already shown')
-                continue
+         if v.lower() == 'yes':
+             letters_done.extend(['a','e','i','o','u'])
 
-            elif x.isspace() == True or x.isnumeric() == True:
-                print("Letters only")
-                continue
-            elif letters_done.count(x) != 0:
-                print('Letter already used')
-                continue
-            elif word.count(x) == 0:
-                print("Incorrect")
-                strikes += 1
-                try:
-                    exec(shapes[strikes-1])
-                except:
-                    break
-                letters_done.append(x)
+         if x.isspace() == True or x.isnumeric() == True:
+            print("Letters only")
+            continue
+         elif letters_done.count(x) != 0:
+            print('Letter already used')
+            continue
+        # Incorrect Option
+         elif word.count(x) == 0:
+            print("Incorrect")
+            strikes += 1
+            try:
+                exec(shapes[strikes-1])
+            except:
+                break
+            letters_done.append(x)
 
-            else:
-                letters_done.append(x)
-                y = 0
-                for w in word:
-                    if w == x:
-                        done_word.pop(y)
-                        done_word.insert(y, x)
-                    y += 1
+        # Correct Option
+         else:
+            letters_done.append(x)
+            y = 0
+            for w in word:
+                if w == x:
+                    done_word.pop(y)
+                    done_word.insert(y, x)
+                y += 1
             i = ''
             for w in ''.join(done_word).replace('-', ' '):
                 w = w+' '
                 i = i+w
             print(i)
 
-        elif v.lower() == 'no':
-            if x.isspace() == True or x.isnumeric() == True:
-                print("Letters only")
-                continue
-            elif letters_done.count(x) != 0:
-                print('Letter already used')
-                continue
-            elif word.count(x) == 0:
-                print("Incorrect")
-                strikes += 1
-                try:
-                    exec(shapes[strikes-1])
-                except:
-                    break
-                letters_done.append(x)
-
-            else:
-                letters_done.append(x)
-                y = 0
-                for w in word:
-                    if w == x:
-                        done_word.pop(y)
-                        done_word.insert(y, x)
-                    y += 1
-            i = ''
-            for w in ''.join(done_word).replace('-', ' '):
-                w = w+' '
-                i = i+w
-            print(i)
 
     if word == ''.join(done_word).replace('-', ' '):
-        print('good job')
+         print('good job')
     else:
-        print('Ha ha you lose')
+         print('Ha ha you lose')
     print('\n'*5)
     letters_done.clear()
     screen.clear()
